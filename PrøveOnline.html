@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Button Click Counter</title>
+  </head>
+  <body>
+    <h1>Button Click Counter</h1>
+    <button id="button">Click me!</button>
+    <p>Total clicks: <span id="score">0</span></p>
+
+    <script>
+      const button = document.getElementById('button');
+      const score = document.getElementById('score');
+      let count = 0;
+
+      // Retrieve the saved count from the server
+      fetch('https://ProjectPIX.github.io')
+        .then(response => response.text())
+        .then(text => {
+          count = parseInt(text);
+          score.innerHTML = count;
+        });
+
+      button.addEventListener('click', () => {
+        count += 1;
+        score.innerHTML = count;
+        // Save the updated count to the server
+        fetch('https://ProjectPIX.github.io', {
+          method: 'POST',
+          body: count
+        });
+      });
+    </script>
+  </body>
+</html>
