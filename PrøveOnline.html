@@ -13,7 +13,7 @@
       let count = 0;
 
       // Retrieve the saved count from the server
-      fetch('https://ProjectPIX.github.io')
+      fetch('https://weilcep.github.io/ProjectPIX.github.io/')
         .then(response => response.text())
         .then(text => {
           count = parseInt(text);
@@ -24,7 +24,7 @@
         count += 1;
         score.innerHTML = count;
         // Save the updated count to the server
-        fetch('https://ProjectPIX.github.io', {
+        fetch('https://weilcep.github.io/ProjectPIX.github.io/', {
           method: 'POST',
           body: count
         });
